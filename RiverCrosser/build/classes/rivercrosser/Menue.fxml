@@ -22,7 +22,7 @@
                   <Font name="Showcard Gothic" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="64.0" layoutY="107.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="84.0" text="Story 2">
+            <Button layoutX="64.0" layoutY="107.0" mnemonicParsing="false" onAction="#displayStory2" prefHeight="58.0" prefWidth="84.0" text="Story 2">
                <font>
                   <Font name="Showcard Gothic" size="16.0" />
                </font>

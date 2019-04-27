@@ -6,6 +6,8 @@
 package rivercrosser;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -16,24 +18,26 @@ import javafx.stage.Stage;
  * @author Lenovo
  */
 public class Story2View {
-     Stage Window;
-    
-    public void getStage(Stage MenueWindow)
+     private Stage Window;
+    public void setStage(Stage window)
     {
-        Window=MenueWindow;
+        Window=window;
     }
-    
-     public void display() throws IOException{
+    public Story2Controller display() 
+    {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Story2.fxml"));
+        Pane root;
+        try {
+            root = loader.load();
+            Window.setScene(new Scene(root,600,400));
+            Window.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Story1View.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Story2Controller controller=loader.getController();
+        System.out.println("Cont="+controller);
         
-        Pane root = FXMLLoader.load(getClass().getResource("Story2.fxml"));
-        /*CrosserFactory f=new CrosserFactory();
-        Crosser tester=f.createCrosser("plant", 0);
-        tester.getAppearance().setTranslateX(200);
-        tester.getAppearance().setTranslateY(300);
-        root.getChildren().add(tester.getAppearance());*/
-        Window.setScene(new Scene(root,600,400));
-        Window.show();
-        
+        return controller;
         
     }
 }

@@ -12,12 +12,26 @@ package rivercrosser;
 public class Story2Controller {
      Story2Model Model=new Story2Model();
     Story2View View=new Story2View();
-    
-     public Story2Controller() {
+    MenueController controller;
+    public Story2Controller()
+    {
         
     }
-     public Story2Controller(Story2View theView, Story2Model theModel) {
-        this.View = theView;
-        this.Model = theModel;
+    public void send(Story2Model model,Story2View view)
+    {
+        Model=model;
+        View=view;
+        
     }
+    public void sayHi()
+    {
+        System.out.println("HI SALOOHA");
+    }
+     /*public void send(MenueController hi)
+    {
+        Model=hi.getModel();
+        View=hi.getView();
+        System.out.println("VIEW1="+View);
+        System.out.println("MODEL1="+Model);
+    }*/
 }

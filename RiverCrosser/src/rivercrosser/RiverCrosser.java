@@ -22,8 +22,9 @@ public class RiverCrosser extends Application{
         MenueView view=new MenueView();
         MenueModel model=new MenueModel();
         view.setStage(Window);
-        MenueController Controller=new MenueController(view,model);
-        view.display();
+        MenueController controller=view.display();
+        controller.send(view,model);
+        
         
     }
     /**

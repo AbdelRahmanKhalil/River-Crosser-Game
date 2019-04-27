@@ -17,11 +17,7 @@ public class MenueModel {
     
     public void startStory1(Stage Window) throws IOException
     {
-       Story1View view=new Story1View();
-       Story1Model model = new Story1Model();
-       Story1Controller controller =new Story1Controller(view,model);
-       view.setStage(Window);
-       view.display();
+      
     }
     public void startStory2()
     {

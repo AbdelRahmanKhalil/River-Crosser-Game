@@ -6,6 +6,8 @@
 package rivercrosser;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -29,27 +31,37 @@ public class MenueView {
     
     public void setStage(Stage MenueWindow)
     {
-        System.out.println("ENTER2");
+        System.out.println("Menue View stage set ");
         Window=MenueWindow;
     }
     
     
-     public void display() throws IOException{
+     public MenueController display() {
         
-        Pane root = FXMLLoader.load(getClass().getResource("Menue.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Menue.fxml"));
+        Pane root;
+         try {
+             root = loader.load();
+             Window.setScene(new Scene(root,600,400));
+             Window.show();
+         } catch (IOException ex) {
+             Logger.getLogger(MenueView.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        MenueController controller=loader.getController();
+        
         //CrosserFactory f=new CrosserFactory();
        // Crosser tester=f.createCrosser("plant", 0);
         //tester.getAppearance().setTranslateX(200);
         //tester.getAppearance().setTranslateY(300);
         //root.getChildren().add(tester.getAppearance());
-        Window.setScene(new Scene(root,600,400));
-        Window.show();
+        
+        return controller;
         
         
     }
     public Stage getStage()
     {
-        System.out.println("ENTER3");
+        System.out.println("Stage brought from Menu view");
         return Window;
     }
 }

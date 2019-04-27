@@ -6,7 +6,10 @@
 package rivercrosser;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -16,24 +19,26 @@ import javafx.stage.Stage;
  * @author Lenovo
  */
 public class Story1View {
-    Stage Window;
-    
-    public void setStage(Stage MenueWindow)
+    private Stage Window;
+    public void setStage(Stage window)
     {
-        Window=MenueWindow;
+        Window=window;
     }
-    
-     public void display() throws IOException{
+    public Story1Controller display() 
+    {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Story1.fxml"));
+        Pane root;
+        try {
+            root = loader.load();
+            Window.setScene(new Scene(root,600,400));
+            Window.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Story1View.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Story1Controller controller=loader.getController();
+        System.out.println("Cont="+controller);
         
-        Pane root = FXMLLoader.load(getClass().getResource("Story1.fxml"));
-        /*CrosserFactory f=new CrosserFactory();
-        Crosser tester=f.createCrosser("plant", 0);
-        tester.getAppearance().setTranslateX(200);
-        tester.getAppearance().setTranslateY(300);
-        root.getChildren().add(tester.getAppearance());*/
-        Window.setScene(new Scene(root,600,400));
-        Window.show();
-        
+        return controller;
         
     }
 }
