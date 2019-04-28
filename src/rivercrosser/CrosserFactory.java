@@ -25,7 +25,7 @@ public class CrosserFactory {
         {
            case(0):
                    {
-                      return new Farmer(new Rectangle(40,40,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/crew (4).png")))), 90, "feteha");
+                      return new Farmer(new Rectangle(30,30,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/crew (4).png")))), 90, "feteha");
                    }
            case(1):
                    {
@@ -47,11 +47,11 @@ public class CrosserFactory {
         {
            case(0):
                    {
-                      return new Carnivore(new Circle(30,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/walrus.png")))), 90, "feteha");
+                      return new Carnivore(new Circle(20,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/walrus.png")))), 90, "feteha");
                    }
            case(1):
                    {
-                      return new Carnivore(new Rectangle(35,41,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/dog.png")))), 90, "feteha");
+                      return new Carnivore(new Rectangle(25,41,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/dog.png")))), 90, "feteha");
                    }
           
         }        
@@ -62,7 +62,7 @@ public class CrosserFactory {
         {
            case(0):
                    {
-                      return new Herbivore(new Rectangle(45,34,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/panda.png")))), 90, "feteha");
+                      return new Herbivore(new Rectangle(25,24,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/panda.png")))), 90, "feteha");
                    }
            case(1):
                    {
@@ -81,7 +81,7 @@ public class CrosserFactory {
         {
            case(0):
                    {
-                      return new Plant(new Rectangle(45,34,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/warda.png")))), 90, "feteha");
+                      return new Plant(new Rectangle(25,24,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/warda.png")))), 90, "feteha");
                    }
            case(1):
                    {

@@ -45,8 +45,8 @@ public class MenueController implements Initializable {
       view.setStage(theView.getStage());
       Story1Controller controller=view.display();
       System.out.println("Cont1="+controller);
-        System.out.println("VIEW="+view);
-        System.out.println("MODEL="+model);
+      System.out.println("VIEW="+view);
+      System.out.println("MODEL="+model);
       controller.send(model,view);
       //controller.send(this);
       

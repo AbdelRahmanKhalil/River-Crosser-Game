@@ -20,13 +20,21 @@ public class Story1Controller {
     }
     public void send(Story1Model model,Story1View view)
     {
+        
         Model=model;
         View=view;
+        Link();
+        Model.setStage(View.getStage());
+        Model.RunStory1();
         
     }
     public void sayHi()
     {
         System.out.println("HI SALOOHA");
+    }
+    public void Link()
+    {
+        Model.getCrossers(View.getCrossers());
     }
      /*public void send(MenueController hi)
     {
