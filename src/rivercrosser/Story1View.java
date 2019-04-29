@@ -19,12 +19,14 @@ import javafx.stage.Stage;
  *
  * @author Lenovo
  */
-public class Story1View {
+public class Story1View 
+    {
+    
     private Stage Window;
     private CrosserFactory Generator= new CrosserFactory();
     Pane root;
     private ArrayList<Crosser> Crosssers= new  ArrayList<>();
-    
+    private Boat boat;
     public void setStage(Stage window)
     {
         Window=window;
@@ -48,27 +50,44 @@ public class Story1View {
         
     }
 
-    public void addCrosser(Crosser crosser,double x,double y)
+    private void addCrosser(Crosser crosser,double x,double y)
     {
         crosser.getAppearance().setTranslateX(x);
         crosser.getAppearance().setTranslateY(y);
-        Crosssers.add(crosser);
+        Crosssers.add(crosser);        
         root.getChildren().add(crosser.getAppearance());
     }
-    public void Setup()
+    private void Setup()
     {
+        
+        addBoat();
         addCrosser(Generator.createCrosser("Farmer",0),100,100); 
         addCrosser(Generator.createCrosser("Herbivore",0),200,100); 
         addCrosser(Generator.createCrosser("Carnivore",0),300,100); 
-        addCrosser(Generator.createCrosser("Plant",0),400,300); 
-       
+        addCrosser(Generator.createCrosser("Plant",0),400,100); 
+           
+    }
+    private void addBoat()
+    {
+        boat = new Boat();
+        boat.Appearance.setTranslateX(100);
+        boat.Appearance.setTranslateY(200);
+        root.getChildren().add(boat.Appearance);
     }
     public ArrayList getCrossers()
     {
       return this.Crosssers;  
     }
+    public Boat getBoat()
+    {
+        return this.boat;
+    }
     public Stage getStage()
     {
       return this.Window;  
+    }
+    public Pane getRoot()
+    {
+        return this.root;
     }
 }

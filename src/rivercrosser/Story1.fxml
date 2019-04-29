@@ -7,9 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="637.0" prefWidth="753.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rivercrosser.Story1Controller">
+<AnchorPane id="AnchorPane" prefHeight="485.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rivercrosser.Story1Controller">
    <children>
-      <ImageView fitHeight="860.0" fitWidth="786.0" layoutX="7.0" layoutY="-1.0" pickOnBounds="true">
+      <ImageView fitHeight="550.0" fitWidth="542.0" layoutX="29.0" layoutY="48.0" pickOnBounds="true">
          <image>
             <Image url="@Images/Story1map.png" />
          </image>

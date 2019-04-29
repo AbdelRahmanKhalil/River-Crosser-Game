@@ -34,7 +34,10 @@ public class Story1Controller {
     }
     public void Link()
     {
-        Model.getCrossers(View.getCrossers());
+        Model.setCrossers(View.getCrossers());
+        Model.setBoat(View.getBoat());
+        Model.setRoot(View.getRoot());
+       
     }
      /*public void send(MenueController hi)
     {

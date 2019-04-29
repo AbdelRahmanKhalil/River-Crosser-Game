@@ -11,9 +11,9 @@ package rivercrosser;
  */
 public class MoveUp implements Command{
     
-    Crosser obj;
+    GameObject obj;
     
-    public MoveUp(Crosser obj)
+    public MoveUp(GameObject obj)
     {
         this.obj=obj;
     }

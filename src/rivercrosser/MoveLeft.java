@@ -11,9 +11,9 @@ package rivercrosser;
  */
 public class MoveLeft implements Command{
 
-    Crosser obj;
+    GameObject obj;
     
-    public MoveLeft(Crosser obj)
+    public MoveLeft(GameObject obj)
     {
         this.obj=obj;
     }

@@ -12,8 +12,8 @@ import javafx.scene.Node;
  *
  * @author Lenovo
  */
-public class Crosser implements Movable{
-    private Node Appearance;
+public class Crosser extends GameObject{
+
     private int Speed;
     private int Weight;
     private boolean Crossed;
@@ -26,6 +26,10 @@ public class Crosser implements Movable{
         this.Weight=Weight;
         this.Name=Name;
         Speed=10-(this.Weight/10);
+    }
+    public Crosser()
+    {
+        
     }
 
     /**
@@ -118,7 +122,6 @@ public class Crosser implements Movable{
     }
     public void moveDown()
     {
-        System.out.println("hii");
         Appearance.setLayoutY(Appearance.getLayoutY()+10);
     }
     public void moveLeft()
@@ -128,6 +131,11 @@ public class Crosser implements Movable{
     public void moveRight()
     {
         Appearance.setLayoutX(Appearance.getLayoutX()+10);
+    }
+    public boolean isColliding(Boat b)
+    {
+        return getAppearance().getBoundsInParent().intersects(b.Appearance.getBoundsInParent());
+        
     }
     
 }

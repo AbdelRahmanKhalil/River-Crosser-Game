@@ -7,9 +7,9 @@ package rivercrosser;
 
 public class MoveDown implements Command{
     
-    Crosser obj;
+    GameObject obj;
     
-    public MoveDown(Crosser obj)
+    public MoveDown(GameObject obj)
     {
         this.obj=obj;
     }
