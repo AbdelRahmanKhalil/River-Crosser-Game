@@ -25,19 +25,19 @@ public class CrosserFactory {
         {
            case(0):
                    {
-                      return new Farmer(new Rectangle(30,30,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/crew (4).png")))), 90, "feteha");
+                      return new Farmer(new Rectangle(30,30,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/crew (4).png")))), 90, "feteha",new Boolean(true));
                    }
            case(1):
                    {
-                      return new Farmer(new Rectangle(40,40,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/crew (4).png")))), 80, "khella");
+                      return new Farmer(new Rectangle(40,40,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/crew (4).png")))), 80, "khella",new Boolean(true));
                    }
            case(2):
                    {
-                      return new Farmer(new Rectangle(40,40,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/crew (4).png")))), 60, "ossa");
+                      return new Farmer(new Rectangle(40,40,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/crew (4).png")))), 60, "ossa",new Boolean(true));
                    }
            case(3):
                    {
-                      return new Farmer(new Rectangle(40,40,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/crew (4).png")))), 40, "salooha");
+                      return new Farmer(new Rectangle(40,40,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/crew (4).png")))), 40, "salooha",new Boolean(true));
                    }
         }        
      }
@@ -47,11 +47,11 @@ public class CrosserFactory {
         {
            case(0):
                    {
-                      return new Carnivore(new Circle(20,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/walrus.png")))), 90, "feteha");
+                      return new Carnivore(new Circle(20,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/walrus.png")))), 90, "feteha",new Boolean(false));
                    }
            case(1):
                    {
-                      return new Carnivore(new Rectangle(25,41,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/dog.png")))), 90, "feteha");
+                      return new Carnivore(new Rectangle(25,41,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/dog.png")))), 90, "feteha",new Boolean(false));
                    }
           
         }        
@@ -62,15 +62,15 @@ public class CrosserFactory {
         {
            case(0):
                    {
-                      return new Herbivore(new Rectangle(25,24,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/panda.png")))), 90, "feteha");
+                      return new Herbivore(new Rectangle(25,24,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/panda.png")))), 90, "feteha",new Boolean(false));
                    }
            case(1):
                    {
-                      return new Herbivore(new Rectangle(34,37,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/zebra.png")))), 90, "feteha");
+                      return new Herbivore(new Rectangle(34,37,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/zebra.png")))), 90, "feteha",new Boolean(false));
                    }
            case(2):
                    {
-                      return new Herbivore(new Rectangle(35,41,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/chicken.png")))), 90, "feteha");
+                      return new Herbivore(new Rectangle(35,41,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/chicken.png")))), 90, "feteha",new Boolean(false));
                    }
           
         }      
@@ -81,11 +81,11 @@ public class CrosserFactory {
         {
            case(0):
                    {
-                      return new Plant(new Rectangle(25,24,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/warda.png")))), 90, "feteha");
+                      return new Plant(new Rectangle(25,24,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/warda.png")))), 90, "feteha",new Boolean(false));
                    }
            case(1):
                    {
-                      return new Plant(new Rectangle(33,40,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/warda1.png")))), 90, "feteha");
+                      return new Plant(new Rectangle(33,40,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/warda1.png")))), 90, "feteha",new Boolean(false));
                    }
         }      
      }

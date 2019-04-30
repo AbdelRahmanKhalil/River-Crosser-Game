@@ -12,20 +12,22 @@ import javafx.scene.Node;
  *
  * @author Lenovo
  */
-public class Crosser extends GameObject{
+public class Crosser extends GameObject implements ICrosser{
 
     private int Speed;
     private int Weight;
+    private int EatingRank;
     private boolean Crossed;
     private boolean OnBoat;
     private String Name;
-    
-    public Crosser(Node Appearance,int Weight,String Name)
+    private boolean canSail;
+    public Crosser(Node Appearance,int Weight,String Name,boolean sail)
     {
         this.Appearance=Appearance;
         this.Weight=Weight;
         this.Name=Name;
         Speed=10-(this.Weight/10);
+        this.canSail=sail;
     }
     public Crosser()
     {
@@ -136,6 +138,31 @@ public class Crosser extends GameObject{
     {
         return getAppearance().getBoundsInParent().intersects(b.Appearance.getBoundsInParent());
         
+    }
+
+    @Override
+    public boolean canSail() {
+       return canSail;
+    }
+
+    @Override
+    public int getEatingRank() {
+     return EatingRank;
+    }
+
+  
+    public Crosser makeCopy() {
+     return this;     
+    }
+
+    
+    public void setLabelToBeShown(String label) {
+        
+    }
+
+    @Override
+    public String getLabelToBeShown() {
+    return null;
     }
     
 }

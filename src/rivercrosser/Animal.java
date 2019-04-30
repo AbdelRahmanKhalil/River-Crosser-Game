@@ -13,8 +13,8 @@ import javafx.scene.Node;
  */
 public class Animal extends Crosser{
 
-    public Animal(Node Appearance, int Weight, String Name) {
-        super(Appearance, Weight, Name);
+    public Animal(Node Appearance, int Weight, String Name,boolean sail) {
+        super(Appearance, Weight, Name,sail);
     }
     
 }

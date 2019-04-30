@@ -13,8 +13,9 @@ import javafx.scene.Node;
  */
 public class Farmer extends Crosser{
 
-    public Farmer(Node Appearance, int Weight, String Name) {
-        super(Appearance, Weight, Name);
+    public Farmer(Node Appearance, int Weight, String Name,boolean bool) {
+        super(Appearance, Weight, Name,bool);
     }
+    
     
 }

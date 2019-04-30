@@ -13,8 +13,8 @@ import javafx.scene.Node;
  */
 public class Herbivore extends Animal{
 
-    public Herbivore(Node Appearance, int Weight, String Name) {
-        super(Appearance, Weight, Name);
+    public Herbivore(Node Appearance, int Weight, String Name,boolean sail) {
+        super(Appearance, Weight, Name,sail);
     }
     
 }
