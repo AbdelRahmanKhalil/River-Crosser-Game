@@ -7,6 +7,13 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="rivercrosser.Story2Controller">
-    
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rivercrosser.Story2Controller">
+   <children>
+      <Button layoutX="263.0" layoutY="3.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Load" />
+      <Button layoutY="3.0" mnemonicParsing="false" onAction="#resetGame" text="Reset" />
+      <Button layoutX="546.0" layoutY="3.0" mnemonicParsing="false" onAction="#newGame" text="New" />
+      <Button layoutX="546.0" layoutY="357.0" mnemonicParsing="false" text="Save" />
+      <Button layoutX="266.0" layoutY="357.0" mnemonicParsing="false" text="Undo" />
+      <Button layoutY="357.0" mnemonicParsing="false" text="Redo" />
+   </children>
 </AnchorPane>

@@ -5,6 +5,8 @@
  */
 package rivercrosser;
 
+
+
 /**
  *
  * @author Osama PC
@@ -14,11 +16,11 @@ public interface ICrosser {
     public int getWeight() ;
     public int getEatingRank();
 
- 
+    
     public Crosser makeCopy();
   
-
-   
+//    public BufferedImage[] getImages();
+      //Image image = SwingFXUtils.toFXImage(capture,null);
     public void setLabelToBeShown(String label);
      
     public String getLabelToBeShown();

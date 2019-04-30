@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public interface ICrossingStrategy {
-    public boolean isValid(ArrayList<Crosser> Crossed ,ArrayList<Crosser>Waiting,List<Crosser>onBoat);
+    public boolean isValid(ArrayList<Crosser> Crossed ,ArrayList<Crosser>Waiting,ArrayList<Crosser>onBoat);
     public ArrayList<Crosser> getInitialCrossers();
     public String[] getInstructions();
             

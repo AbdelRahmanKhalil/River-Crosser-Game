@@ -44,7 +44,7 @@ public class Story1View
         }
         Setup();
         Story1Controller controller=loader.getController();
-        System.out.println("Cont="+controller);
+        //System.out.println("Cont="+controller);
         
         return controller;
         
@@ -60,7 +60,7 @@ public class Story1View
     private void Setup()
     {
         
-        addBoat();
+        //addBoat();
         addCrosser(Generator.createCrosser("Farmer",0),100,100); 
         addCrosser(Generator.createCrosser("Herbivore",0),200,100); 
         addCrosser(Generator.createCrosser("Carnivore",0),300,100); 
