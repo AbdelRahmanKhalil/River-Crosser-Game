@@ -7,12 +7,11 @@ package rivercrosser;
 
 import java.util.ArrayList;
 
+
+
+    public interface IRiverCrossingController {
+
 /**
- *
- * @author Lenovo
- */
-public interface IRiverCrossingController {
-    /**
 * this method initialize the controller with game strategy according
 * to the level
 * @param gameStrategy
@@ -30,16 +29,13 @@ public String[] getInstructions();
 /**
 * @return list of crossers on the right bank of the river
 */
-public ArrayList<ICrosser> getCrossersOnRightBank();
+public ArrayList<Crosser> getCrossersOnRightBank();
 /**
 * @return list of crossers on the left bank of the river
 */
-public ArrayList<ICrosser> getCrossersOnLeftBank();
+public ArrayList<Crosser> getCrossersOnLeftBank();
 /**
-* @return determines whether the boat is on the left or on the right
-* 
-* bank of the river
-*/
+* @return determines whether the boat is on the left or on the right*/
 public boolean isBoatOnTheLeftBank();
 /**
 * @return returns the number of sails that the user have done so far
@@ -51,14 +47,14 @@ public int getNumberOfSails();
 * with the direction of the current game
 * @return boolean if it is a valid move or not
 */
-public boolean canMove(ArrayList<ICrosser> crossers, boolean
+public boolean canMove(ArrayList<Crosser> crossers, boolean
 fromLeftToRightBank);
 /**
 * this method ysed to perform the move if it is valid
 * @param crossers
 * @param fromLeftToRightBank
 */
-public void doMove(ArrayList<ICrosser> crossers, boolean
+public void doMove(ArrayList<Crosser> crossers, boolean
 fromLeftToRightBank);
 /**
 * @return boolean providing that the undo action can be done or not
@@ -92,4 +88,4 @@ public void loadGame();
 * until the final solution to show the user the solution
 */
 public ArrayList<ArrayList<ICrosser>> solveGame();
-}
+    }

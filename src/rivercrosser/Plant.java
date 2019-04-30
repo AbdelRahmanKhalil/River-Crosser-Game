@@ -15,7 +15,6 @@ public class Plant extends Crosser{
 
     public Plant(Node Appearance, int Weight, String Name,boolean sail) {
         super(Appearance, Weight, Name,sail);
-        sailingType=new CantSail();
     }
     
 }

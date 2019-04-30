@@ -5,11 +5,15 @@
  */
 package rivercrosser;
 
+import java.util.ArrayList;
+import java.util.List;
+import javafx.animation.AnimationTimer;
+
 /**
  *
  * @author Lenovo
  */
-public class Story1Controller {
+public class Story1Controller implements ICrossingStrategy{
     
     Story1Model Model=new Story1Model();
     Story1View View =new Story1View();
@@ -25,8 +29,8 @@ public class Story1Controller {
         View=view;
         Link();
         Model.setStage(View.getStage());
-        Model.RunStory1();
-        
+        run();
+        System.out.println("hi");
     }
     public void sayHi()
     {
@@ -37,7 +41,8 @@ public class Story1Controller {
         Model.setCrossers(View.getCrossers());
         Model.setBoat(View.getBoat());
         Model.setRoot(View.getRoot());
-       
+        Model.setHarbour1(View.getHarbour1());
+        Model.setHarbour2(View.getHarbour2());
     }
      /*public void send(MenueController hi)
     {
@@ -46,4 +51,32 @@ public class Story1Controller {
         System.out.println("VIEW1="+View);
         System.out.println("MODEL1="+Model);
     }*/
+
+    @Override
+    public boolean isValid(ArrayList<Crosser> Crossed, ArrayList<Crosser> Waiting, List<Crosser> onBoat) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<Crosser> getInitialCrossers() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String[] getInstructions() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   public void run()
+   {
+       AnimationTimer timer;
+        timer = new AnimationTimer() {
+            
+            @Override
+            public void handle(long now) {
+            Model.RunStory1();
+            } 
+        };
+        timer.start();
+   }
 }

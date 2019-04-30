@@ -21,7 +21,6 @@ public class Crosser extends GameObject implements ICrosser{
     private boolean OnBoat;
     private String Name;
     private boolean canSail;
-    public Sails sailingType;
     public Crosser(Node Appearance,int Weight,String Name,boolean sail)
     {
         this.Appearance=Appearance;
@@ -34,15 +33,11 @@ public class Crosser extends GameObject implements ICrosser{
     {
         
     }
-    public void tryToSail()
-    {
-        canSail=sailingType.sail();
-        
-    }
 
     /**
      * @return the Appearance
      */
+
     public Node getAppearance() {
         return Appearance;
     }
@@ -151,7 +146,6 @@ public class Crosser extends GameObject implements ICrosser{
        return canSail;
     }
 
-    @Override
     public int getEatingRank() {
      return EatingRank;
     }

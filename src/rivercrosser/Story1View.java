@@ -10,9 +10,13 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 /**
@@ -27,6 +31,9 @@ public class Story1View
     Pane root;
     private ArrayList<Crosser> Crosssers= new  ArrayList<>();
     private Boat boat;
+    private Node Harbour1;
+    private Node Harbour2;
+    
     public void setStage(Stage window)
     {
         Window=window;
@@ -52,6 +59,7 @@ public class Story1View
 
     private void addCrosser(Crosser crosser,double x,double y)
     {
+        
         crosser.getAppearance().setTranslateX(x);
         crosser.getAppearance().setTranslateY(y);
         Crosssers.add(crosser);        
@@ -59,7 +67,7 @@ public class Story1View
     }
     private void Setup()
     {
-        
+        addHarbour();
         addBoat();
         addCrosser(Generator.createCrosser("Farmer",0),100,100); 
         addCrosser(Generator.createCrosser("Herbivore",0),200,100); 
@@ -74,6 +82,18 @@ public class Story1View
         boat.Appearance.setTranslateY(200);
         root.getChildren().add(boat.Appearance);
     }
+    public void addHarbour()
+    {
+        Harbour2=new Rectangle(40,40,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/zebra.png"))));
+        Harbour1= new Rectangle(40,40,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/zebra.png"))));
+        Harbour1.setTranslateX(90);
+        Harbour1.setTranslateY(425);
+        Harbour2.setTranslateX(480);
+        Harbour2.setTranslateY(190);
+        root.getChildren().add(Harbour1);
+        root.getChildren().add(Harbour2);
+        
+    }   
     public ArrayList getCrossers()
     {
       return this.Crosssers;  
@@ -89,5 +109,15 @@ public class Story1View
     public Pane getRoot()
     {
         return this.root;
+    }
+    public Node getHarbour1()
+            
+    {
+        return Harbour1;
+    }
+    public Node getHarbour2()
+            
+    {
+        return Harbour2;
     }
 }

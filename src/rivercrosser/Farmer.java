@@ -15,7 +15,6 @@ public class Farmer extends Crosser{
 
     public Farmer(Node Appearance, int Weight, String Name,boolean bool) {
         super(Appearance, Weight, Name,bool);
-        sailingType=new ItSails();
     }
     
     
