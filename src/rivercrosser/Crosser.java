@@ -6,6 +6,7 @@
 package rivercrosser;
 
 import java.awt.geom.Point2D;
+import java.awt.image.BufferedImage;
 import javafx.scene.Node;
 
 /**
@@ -66,7 +67,7 @@ public class Crosser extends GameObject implements ICrosser{
     /**
      * @return the Weight
      */
-    public int getWeight() {
+    public int GetWeight() {
         return Weight;
     }
 
@@ -121,23 +122,23 @@ public class Crosser extends GameObject implements ICrosser{
 
     public void moveUp()
     {
-        Appearance.setLayoutY(Appearance.getLayoutY()-10);
+        Appearance.setTranslateY(Appearance.getTranslateY()-Speed);
     }
     public void moveDown()
     {
-        Appearance.setLayoutY(Appearance.getLayoutY()+10);
+        Appearance.setTranslateY(Appearance.getTranslateY()+Speed);
     }
     public void moveLeft()
     {
-        Appearance.setLayoutX(Appearance.getLayoutX()-10);
+       Appearance.setTranslateX(Appearance.getTranslateX()-Speed);
     }
     public void moveRight()
     {
-        Appearance.setLayoutX(Appearance.getLayoutX()+10);
+         Appearance.setTranslateX(Appearance.getTranslateX()+Speed);
     }
-    public boolean isColliding(Boat b)
+    public boolean isColliding(Node b)
     {
-        return getAppearance().getBoundsInParent().intersects(b.Appearance.getBoundsInParent());
+        return getAppearance().getBoundsInParent().intersects(b.getBoundsInParent());
         
     }
 
@@ -164,5 +165,16 @@ public class Crosser extends GameObject implements ICrosser{
     public String getLabelToBeShown() {
     return null;
     }
-    
+
+    @Override
+    public double getWeight() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public BufferedImage[] getImages() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
 }

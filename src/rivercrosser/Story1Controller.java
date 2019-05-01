@@ -13,7 +13,7 @@ import javafx.animation.AnimationTimer;
  *
  * @author Lenovo
  */
-public class Story1Controller implements ICrossingStrategy{
+public class Story1Controller{
     
     Story1Model Model=new Story1Model();
     Story1View View =new Story1View();
@@ -43,6 +43,9 @@ public class Story1Controller implements ICrossingStrategy{
         Model.setRoot(View.getRoot());
         Model.setHarbour1(View.getHarbour1());
         Model.setHarbour2(View.getHarbour2());
+        Model.getBorder1(View.getBorder2());
+        Model.getBorder2(View.getBorder1());
+        
     }
      /*public void send(MenueController hi)
     {
@@ -51,21 +54,6 @@ public class Story1Controller implements ICrossingStrategy{
         System.out.println("VIEW1="+View);
         System.out.println("MODEL1="+Model);
     }*/
-
-    @Override
-    public boolean isValid(ArrayList<Crosser> Crossed, ArrayList<Crosser> Waiting, List<Crosser> onBoat) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<Crosser> getInitialCrossers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String[] getInstructions() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
    public void run()
    {

@@ -51,7 +51,7 @@ public class CrosserFactory {
                    }
            case(1):
                    {
-                      return new Carnivore(new Rectangle(25,41,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/dog.png")))), 90, "feteha",new Boolean(false));
+                      return new Carnivore(new Rectangle(25,41,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/dog.png")))), 30, "feteha",new Boolean(false));
                    }
           
         }        
@@ -62,15 +62,15 @@ public class CrosserFactory {
         {
            case(0):
                    {
-                      return new Herbivore(new Rectangle(25,24,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/panda.png")))), 90, "feteha",new Boolean(false));
+                      return new Herbivore(new Rectangle(25,24,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/panda.png")))), 85, "feteha",new Boolean(false));
                    }
            case(1):
                    {
-                      return new Herbivore(new Rectangle(34,37,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/zebra.png")))), 90, "feteha",new Boolean(false));
+                      return new Herbivore(new Rectangle(34,37,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/zebra.png")))), 70, "feteha",new Boolean(false));
                    }
            case(2):
                    {
-                      return new Herbivore(new Rectangle(35,41,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/chicken.png")))), 90, "feteha",new Boolean(false));
+                      return new Herbivore(new Rectangle(35,41,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/chicken.png")))), 5, "feteha",new Boolean(false));
                    }
           
         }      
@@ -81,11 +81,11 @@ public class CrosserFactory {
         {
            case(0):
                    {
-                      return new Plant(new Rectangle(25,24,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/warda.png")))), 90, "feteha",new Boolean(false));
+                      return new Plant(new Rectangle(25,24,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/warda.png")))), 10, "feteha",new Boolean(false));
                    }
            case(1):
                    {
-                      return new Plant(new Rectangle(33,40,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/warda1.png")))), 90, "feteha",new Boolean(false));
+                      return new Plant(new Rectangle(33,40,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/warda1.png")))), 10, "feteha",new Boolean(false));
                    }
         }      
      }

@@ -8,8 +8,9 @@ import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
-public class Story1Model implements IRiverCrossingController{
+//Y-AXIS 221 UPPER Y-AXIS 430 LOWER
+//X-AXIS 557 RIGHT X-AXIS 38 LEFT
+public class Story1Model {
     
     private ArrayList<Crosser> Crossers = new ArrayList<Crosser>();
     private ArrayList<Crosser> Crossed = new ArrayList<Crosser>();
@@ -27,6 +28,10 @@ public class Story1Model implements IRiverCrossingController{
     private Node Harbour2;
     private boolean harb1;
     private boolean harb2;
+    private Node Border1;
+    private Node Border2;
+    
+    GameObject player;
     //Story1View View =new Story1View();
     public void setCrossers(ArrayList<Crosser> crossers)
      {
@@ -40,6 +45,8 @@ public class Story1Model implements IRiverCrossingController{
     }
     public Story1Model RunStory1()
     {
+        Border1.setVisible(false);
+        Border2.setVisible(false);
        harbourStatus();
                stage.getScene().setOnKeyPressed(e->{
                    
@@ -48,18 +55,29 @@ public class Story1Model implements IRiverCrossingController{
                        
                          if(e.getCode()==KeyCode.DOWN)
                         {
+                            System.out.println(" X = "+player.Appearance.getTranslateY());
+                           
+                            if(player.Appearance.getTranslateY()<550&&player.Appearance.getBoundsInParent().intersects(Border2.getBoundsInParent())==false&&boat.Appearance.getBoundsInParent().intersects(Border1.getBoundsInParent())==false)
                              moveDown.execute();
+                            
                         }
                         if(e.getCode()==KeyCode.UP)
                         {
-                             moveUp.execute();
+                             if(player.Appearance.getTranslateY()>60&&player.Appearance.getBoundsInParent().intersects(Border1.getBoundsInParent())==false&&boat.Appearance.getBoundsInParent().intersects(Border2.getBoundsInParent())==false)
+                             {
+                                
+                                moveUp.execute();
+                             }
                         }
                         if(e.getCode()==KeyCode.LEFT)
                         {
+                            System.out.println(" X = "+player.Appearance.getTranslateX());
+                            if(player.Appearance.getTranslateX()>30)
                             moveLeft.execute();
                         }
                         if(e.getCode()==KeyCode.RIGHT)
                         {
+                           if(player.Appearance.getTranslateX()<540)
                             moveRight.execute();
                         }
                          if(e.getCode()==KeyCode.E)
@@ -88,7 +106,7 @@ public class Story1Model implements IRiverCrossingController{
                                 {
                                    // Controlled = new Boat();
                                     //Controlled=boat;
-                                    if(canMove(Crossers, harb1))
+                                    if(canMove()==true)
                                     {
                                         System.out.println("ye5");
                                          ControlThis(boat);
@@ -120,37 +138,47 @@ public class Story1Model implements IRiverCrossingController{
        onBoat.add(crosser);
        System.out.println("added");
        Crossers.remove(crosser);
+       crosser.getAppearance().setTranslateX(0);
+       crosser.getAppearance().setTranslateY(0);
        root.getChildren().remove(crosser.getAppearance());
        boat.Passengers++;
    }
-   
+  
    private void getOffBoat(int HarbourNumber)
    {
 
        //boat=(Boat) Controlled;
        System.out.println("getting off");
-       int x=50;
+       double x=45;
        root.getChildren().remove(boat.Appearance);
        for(Crosser cross:onBoat)
        {
-           
+            System.out.println("hi "+cross.getName());
            if(HarbourNumber==1)
            {
-               System.out.println("sout"+Harbour1.getTranslateX()+x);
-           cross.getAppearance().setTranslateX(100);
-           cross.getAppearance().setTranslateY(100);
+          
+           cross.getAppearance().setTranslateX(Harbour1.getTranslateX()+x);
+           cross.getAppearance().setTranslateY(435);
            boat.Appearance.setTranslateX(Harbour1.getTranslateX()+45);
-           boat.Appearance.setTranslateY(Harbour1.getTranslateY());
+           boat.Appearance.setTranslateY(Harbour1.getTranslateY()-30);
            Crossers.add(cross);
+           Crossed.add(cross);
+           harb1=true;
+           harb2=false;
+    //        <BorderPane layoutX="36.0" layoutY="426.0" prefHeight="158.0" prefWidth="534.0" />
+     // <BorderPane layoutX="46.0" layoutY="48.0" prefHeight="171.0" prefWidth="514.0" />
            }
            if(HarbourNumber==2)
            {
                
-           cross.getAppearance().setTranslateX(200);
-           cross.getAppearance().setTranslateY(200);  
+           cross.getAppearance().setTranslateX(Harbour2.getTranslateX()-x);
+           cross.getAppearance().setTranslateY(160);  
            boat.Appearance.setTranslateX(Harbour2.getTranslateX()+45);
-           boat.Appearance.setTranslateY(Harbour2.getTranslateY());
+           boat.Appearance.setTranslateY(Harbour2.getTranslateY()+30);
            Crossers.add(cross);
+           
+           harb2=true;
+           harb1=false;
            }
            root.getChildren().add(cross.getAppearance());
            
@@ -166,58 +194,31 @@ public class Story1Model implements IRiverCrossingController{
    private void ControlThis(GameObject thing)
    {
        Controlled = true;
+        player=thing;
        moveDown=new MoveDown(thing);
        moveUp = new MoveUp(thing);
        moveLeft=new MoveLeft(thing);
        moveRight=new MoveRight(thing);
    }
 
-    @Override
-    public void newGame(ICrossingStrategy gameStrategy) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void resetGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String[] getInstructions() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<Crosser> getCrossersOnRightBank() {
-        return Crossers;
-    }
-
-    @Override
-    public ArrayList<Crosser> getCrossersOnLeftBank() {
-         return Crossed;
-    }
+    
 
     public boolean isBoatOnTheLeftBank() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public int getNumberOfSails() {
-     return 0;
-    }
 
-    @Override
-    public boolean canMove(ArrayList<Crosser> crossers, boolean fromLeftToRightBank) {
+    public boolean canMove() {
         int i;
         int j;
         for(i=0;i<Crossers.size();i++)
         {
-             if(i!=Crossers.size()-1)
-                {
+          if(i!=Crossers.size()-1)
+            {
 
             for(j=i+1;j<Crossers.size();j++)
             {
-                //System.out.println(" "+j);
+                System.out.println(" eating rank "+Crossers.get(i).getEatingRank());
                 if(Crossers.get(i).getEatingRank()>Crossers.get(i).getEatingRank())
                 {
                     return false;
@@ -229,10 +230,6 @@ public class Story1Model implements IRiverCrossingController{
         return true;
     }
 
-    @Override
-    public void doMove(ArrayList<Crosser> crossers, boolean fromLeftToRightBank) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
   public void harbourStatus()
   {
           if(boat.atHarbour(Harbour1))
@@ -249,11 +246,26 @@ public class Story1Model implements IRiverCrossingController{
                      harb1=false;
                      getOffBoat(2);
                  }
-                 else {
+       else {
                   for(Crosser cross:Crossers)
               {
              
-                if(cross.isColliding(boat))
+                if(cross.isColliding(Harbour1)&&harb1==true)
+                {
+                    if(boat.Passengers<2)
+                    {
+                        System.out.println("getting on");
+                        if(cross instanceof Farmer)
+                            {
+                                boat.drivable=true;
+                                //harb1=true;
+                            }
+                                getOnBoat(cross);
+                                break;
+                                
+                    }
+                }
+                if(cross.isColliding(Harbour2)&&harb2==true)
                 {
                     if(boat.Passengers<2)
                     {
@@ -270,50 +282,26 @@ public class Story1Model implements IRiverCrossingController{
                 }
                
             }
-                 }  
+          }  
   }
-    @Override
-    public boolean canUndo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean canRedo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void undo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void redo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void saveGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void loadGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<ArrayList<ICrosser>> solveGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+   
    public void setHarbour1(Node harbour1)
    {
        this.Harbour1=harbour1;
-
+       harb2=true;
+       
    }
    public void setHarbour2(Node harbour2)
    {
        this.Harbour2=harbour2;
+       
+   }
+   public void getBorder1(Node border)
+   {
+       Border1=border;
+   }
+   public void getBorder2(Node border)
+   {
+       Border2=border;
    }
 }
