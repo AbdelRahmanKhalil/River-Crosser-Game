@@ -44,7 +44,10 @@ public class Boat extends GameObject{
     {
         Appearance.setTranslateX(Appearance.getTranslateX()+15);
     }
-    
+    public boolean atHarbour(Node harbour)
+    {
+        return Appearance.getBoundsInParent().intersects(harbour.getBoundsInParent());
+    }
    //public Boat getBoat()
    //{
        //return new Boat(new Rectangle(30,30,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/assets/crew (4).png")))), 90, "feteha");

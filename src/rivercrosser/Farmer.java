@@ -13,8 +13,8 @@ import javafx.scene.Node;
  */
 public class Farmer extends Crosser{
 
-    public Farmer(Node Appearance, int Weight, String Name,boolean bool) {
-        super(Appearance, Weight, Name,bool);
+    public Farmer(Node Appearance, int Weight, String Name,boolean bool,int eatingRank) {
+        super(Appearance, Weight, Name,bool,eatingRank);
     }
     
     

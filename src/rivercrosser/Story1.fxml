@@ -14,5 +14,6 @@
             <Image url="@Images/Story1map.png" />
          </image>
       </ImageView>
+     
    </children>
 </AnchorPane>

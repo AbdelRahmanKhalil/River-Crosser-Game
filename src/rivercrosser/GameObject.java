@@ -28,6 +28,6 @@ public class GameObject implements Movable{
     public void moveDown() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+ 
    
 }

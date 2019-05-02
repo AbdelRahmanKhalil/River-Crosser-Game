@@ -6,6 +6,7 @@
 package rivercrosser;
 
 import java.awt.geom.Point2D;
+import java.awt.image.BufferedImage;
 import javafx.scene.Node;
 
 /**
@@ -21,22 +22,30 @@ public class Crosser extends GameObject implements ICrosser{
     private boolean OnBoat;
     private String Name;
     private boolean canSail;
-    public Crosser(Node Appearance,int Weight,String Name,boolean sail)
+    public Crosser(Node Appearance,int Weight,String Name,boolean sail,int EatingRank)
     {
         this.Appearance=Appearance;
         this.Weight=Weight;
         this.Name=Name;
         Speed=10-(this.Weight/10);
         this.canSail=sail;
+        this.EatingRank=EatingRank;
     }
     public Crosser()
     {
         
     }
 
+    public void setEatingRank(int eatingRank) {
+        EatingRank = eatingRank;
+    }
+
     /**
      * @return the Appearance
      */
+
+
+
     public Node getAppearance() {
         return Appearance;
     }
@@ -65,7 +74,7 @@ public class Crosser extends GameObject implements ICrosser{
     /**
      * @return the Weight
      */
-    public int getWeight() {
+    public int GetWeight() {
         return Weight;
     }
 
@@ -120,23 +129,23 @@ public class Crosser extends GameObject implements ICrosser{
 
     public void moveUp()
     {
-        Appearance.setLayoutY(Appearance.getLayoutY()-10);
+        Appearance.setTranslateY(Appearance.getTranslateY()-Speed);
     }
     public void moveDown()
     {
-        Appearance.setLayoutY(Appearance.getLayoutY()+10);
+        Appearance.setTranslateY(Appearance.getTranslateY()+Speed);
     }
     public void moveLeft()
     {
-        Appearance.setLayoutX(Appearance.getLayoutX()-10);
+       Appearance.setTranslateX(Appearance.getTranslateX()-Speed);
     }
     public void moveRight()
     {
-        Appearance.setLayoutX(Appearance.getLayoutX()+10);
+         Appearance.setTranslateX(Appearance.getTranslateX()+Speed);
     }
-    public boolean isColliding(Boat b)
+    public boolean isColliding(Node b)
     {
-        return getAppearance().getBoundsInParent().intersects(b.Appearance.getBoundsInParent());
+        return getAppearance().getBoundsInParent().intersects(b.getBoundsInParent());
         
     }
 
@@ -145,7 +154,6 @@ public class Crosser extends GameObject implements ICrosser{
        return canSail;
     }
 
-    @Override
     public int getEatingRank() {
      return EatingRank;
     }
@@ -164,5 +172,16 @@ public class Crosser extends GameObject implements ICrosser{
     public String getLabelToBeShown() {
     return null;
     }
-    
+
+    @Override
+    public double getWeight() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public BufferedImage[] getImages() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
 }
