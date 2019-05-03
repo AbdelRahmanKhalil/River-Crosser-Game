@@ -34,6 +34,7 @@ public class Story1Model {
     private Node Border2;
     int NumberOfMoves;
     GameObject player;
+   private XMLwrite saver = new XMLwrite();
     //Story1View View =new Story1View();
     public void setCrossers(ArrayList<Crosser> crossers)
      {
@@ -52,7 +53,7 @@ public class Story1Model {
     }
     public Story1Model RunStory1()
     {
-        System.out.println("Number of moves "+NumberOfMoves);
+      //  System.out.println("Number of moves "+NumberOfMoves);
         Border1.setVisible(false);
         Border2.setVisible(false);
         GameStatus();
@@ -104,6 +105,10 @@ public class Story1Model {
                             }
                             
                         }
+                         if(e.getCode()==KeyCode.S)
+                         {
+                             Save();
+                         }
                    }
                });
            
@@ -410,10 +415,11 @@ public class Story1Model {
    }
     private void GameStatus()
     {
-        System.out.println(" FINSI ");
+       // System.out.println(" FINSI ");
         if(Crossed.size()==4)
         {
             timer.stop();
+            EndGame();
         }
     }
     public boolean EndGame()
@@ -427,5 +433,24 @@ public class Story1Model {
         {
             return false;
         }
+    }
+    public void Save()
+    {
+        FillArrayList filler= new FillArrayList();
+        
+        filler.SaveToArrays(onShore, onBoat, Crossed);
+        
+        System.out.println("Onshore Size : "+onShore.size());
+         System.out.println("Crossed Size : "+Crossed.size());
+          System.out.println("OnBoar : "+onBoat.size());
+       saver.arrayLeft(filler.LeftCrossers);
+       saver.arrayRight(filler.RightCrossers);
+       saver.arrayonboat(filler.onboatCrossers);
+       
+        System.out.println("Onshore Size : "+saver.L.size());
+         System.out.println("Crossed Size : "+saver.R.size());
+          System.out.println("OnBoar : "+saver.O.size());
+          
+       saver.writeXML();
     }
 }

@@ -13,7 +13,7 @@ import javafx.animation.AnimationTimer;
  *
  * @author Lenovo
  */
-public class Story1Controller{
+public class Story1Controller {
     
     Story1Model Model=new Story1Model();
     Story1View View =new Story1View();
@@ -32,6 +32,7 @@ public class Story1Controller{
         Model.run();
         check();
         System.out.println("hi");
+        
     }
     public void sayHi()
     {
