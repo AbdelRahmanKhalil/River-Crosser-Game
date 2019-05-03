@@ -16,6 +16,7 @@ public class Story1Model {
     private ArrayList<Crosser> Crossed = new ArrayList<Crosser>();
     private ArrayList<Crosser> onBoat = new ArrayList<Crosser>();
     private ArrayList<Crosser> onShore = new ArrayList<Crosser>();
+    AnimationTimer timer;
     MoveDown moveDown;
     MoveUp moveUp;
     MoveLeft moveLeft;
@@ -31,15 +32,18 @@ public class Story1Model {
     private boolean harb2;
     private Node Border1;
     private Node Border2;
-    
+    int NumberOfMoves;
     GameObject player;
     //Story1View View =new Story1View();
     public void setCrossers(ArrayList<Crosser> crossers)
      {
          
         this.Crossers=crossers;
-        this.onShore=crossers;
-
+        for(Crosser cross:crossers)
+        {
+            onShore.add(cross);
+        }
+         System.out.println("adding crossers");
         
      }
     public void setBoat(Boat b)
@@ -48,9 +52,11 @@ public class Story1Model {
     }
     public Story1Model RunStory1()
     {
+        System.out.println("Number of moves "+NumberOfMoves);
         Border1.setVisible(false);
         Border2.setVisible(false);
-       harbourStatus();
+        GameStatus();
+               harbourStatus();
                stage.getScene().setOnKeyPressed(e->{
                    
                    if(Controlled ==true)
@@ -74,7 +80,7 @@ public class Story1Model {
                         }
                         if(e.getCode()==KeyCode.LEFT)
                         {
-                            System.out.println(" X = "+player.Appearance.getTranslateX());
+                          //  System.out.println(" X = "+player.Appearance.getTranslateX());
                             if(player.Appearance.getTranslateX()>30)
                             moveLeft.execute();
                         }
@@ -85,6 +91,7 @@ public class Story1Model {
                         }
                          if(e.getCode()==KeyCode.E)
                         {
+                            
                            if(harb1==true)
                            {
                                getOffBoat(1);
@@ -95,6 +102,7 @@ public class Story1Model {
                                 getOffBoat(2);
 
                             }
+                            
                         }
                    }
                });
@@ -106,7 +114,7 @@ public class Story1Model {
                          {
                              if(e.getTarget()==cross.getAppearance())
                              {
-                                 System.out.println("clicke");
+                                // System.out.println("clicke");
                                //  Controlled= new Crosser();
                                 // Controlled = cross;
                                  ControlThis(cross);
@@ -120,7 +128,7 @@ public class Story1Model {
                                     //Controlled=boat;
                                     if(true)
                                     {
-                                        System.out.println("ye5");
+                                   //     System.out.println("ye5");
                                          ControlThis(boat);
                                          
                                     }
@@ -147,40 +155,49 @@ public class Story1Model {
     }
    private void getOnBoat(Crosser crosser)
    {
+       
        onBoat.add(crosser);
-       System.out.println("added");
+       //System.out.println("added");
        Crossers.remove(crosser);
 
        if(harb2==true) {
            onShore.remove(crosser);
+           System.out.println("moving from shore");
 
        }
-       System.out.println("masha "+crosser.getName());
+       if(harb1==true)
+       {
+           Crossed.remove(crosser);
+           System.out.println("moving from other side");
+       }
+       
        crosser.getAppearance().setTranslateX(0);
        crosser.getAppearance().setTranslateY(0);
        root.getChildren().remove(crosser.getAppearance());
        boat.Passengers++;
+       System.out.println("Boat passengers: "+boat.Passengers);
 
    }
   
    private void getOffBoat(int HarbourNumber)
    {
-
+       
        //boat=(Boat) Controlled;
        System.out.println("getting off");
        double x=45;
        root.getChildren().remove(boat.Appearance);
+      
        for(Crosser cross:onBoat)
        {
-            System.out.println("hi "+cross.getName());
+           Crossers.add(cross);
+        
            if(HarbourNumber==1)
            {
-          
+        
            cross.getAppearance().setTranslateX(Harbour1.getTranslateX()+x);
            cross.getAppearance().setTranslateY(435);
            boat.Appearance.setTranslateX(Harbour1.getTranslateX()+45);
            boat.Appearance.setTranslateY(Harbour1.getTranslateY()-30);
-           Crossers.add(cross);
            Crossed.add(cross);
            harb1=true;
            harb2=false;
@@ -194,9 +211,9 @@ public class Story1Model {
            cross.getAppearance().setTranslateY(160);  
            boat.Appearance.setTranslateX(Harbour2.getTranslateX()+45);
            boat.Appearance.setTranslateY(Harbour2.getTranslateY()+30);
-           Crossers.add(cross);
+        
            onShore.add(cross);
-               System.out.println("wasal "+cross.getName());
+            
            
            harb2=true;
            harb1=false;
@@ -205,12 +222,14 @@ public class Story1Model {
            
            x=55;   
            boat.Passengers--;
+           System.out.println("Boat passengers: "+boat.Passengers);
        }
        
-        onBoat.removeAll(onBoat);
+         onBoat.clear();
         boat.drivable=false;
         Controlled=false;
         root.getChildren().add(boat.Appearance);
+      //  Crossers.clear();
    }
    private void ControlThis(GameObject thing)
    {
@@ -232,34 +251,57 @@ public class Story1Model {
     public void canMove() {
         int i;
         int j;
+        boolean stop = false;
         if(harb2==true) {
+            System.out.println("true harb 2");
             for (i = 0; i < onShore.size(); i++) {
-
-
+                   // System.out.println("Number on Shore "+onShore.size());
+                   // System.out.println(" eating rank on shore " + onShore.get(i).getEatingRank());
                     for (j = 0; j < onShore.size(); j++) {
-                        System.out.println(" eating rank " + onShore.get(i).getEatingRank());
-                        if (onShore.get(i).getEatingRank() == onShore.get(j).getEatingRank() + 1) {
-                            System.out.println("m3elsalama");//window yetla3 aw ay ebn metnaka
+                        
+                        if (onShore.get(i).getEatingRank() == onShore.get(j).getEatingRank() + 1)
+                        {
+                            //System.out.println("m3elsalama");//window yetla3 aw ay ebn metnaka
+                            //return false;
+                             AlertBox.display("TAKE CARE","Invalid Move");
+                             NumberOfMoves++;
+                             Controlled=false;
+                             getOffBoat(2);
+                             stop = true;
                         }
 
                     }
-
+                if(stop==true)
+                {
+                    break;
+                }
             }
+          //  return true;
 
         }
 
 
         if(harb1==true) {
             for (i = 0; i < Crossed.size(); i++) {
-
-
-                    for (j = i; j < Crossed.size(); j++) {
+                System.out.println("true harb 1");
+               // System.out.println("Number on other side "+Crossed.size());
+               // System.out.println(" Eatin rank at other side" + Crossed.get(i).getEatingRank());
+           
+                    for (j = 0; j < Crossed.size(); j++) {
                         if (Crossed.get(i).getEatingRank() == Crossed.get(j).getEatingRank() + 1) {
-                            System.out.println("M3 el salama"); //window yetla3 aw ay ebn metnaka
+                             AlertBox.display("TAKE CARE","Invalid Move");
+                             NumberOfMoves++;
+                             Controlled=false;
+                             getOffBoat(1);
+                             stop=true;
+                             //System.out.println("M3 el salama other side"); //window yetla3 aw ay ebn metnaka
                         }
 
                     }
-
+                        if(stop==true)
+                       {
+                            break;
+                       }
             }
 
         }
@@ -268,50 +310,65 @@ public class Story1Model {
   public void harbourStatus()
   {
           if(boat.atHarbour(Harbour1))
-                 {
+                 { System.out.println("Arrived on the Other Side!");
                      harb1=true;
                      harb2=false;
-                     if(boat.Passengers!=0)
+                    // if(boat.Passengers>=0)
                      getOffBoat(1);
+                     System.out.println("Shore has "+onShore.size()+"and Other side has "+Crossed.size());
+                     NumberOfMoves++;
                  }
                  else if(boat.atHarbour(Harbour2))
                  {
-                     if(boat.Passengers!=0)
-                     harb2=true;
-                     harb1=false;
-                     getOffBoat(2);
+                      System.out.println("Arrived on Shore!");
+                      //if(boat.Passengers>=0)
+                      harb2=true;
+                      harb1=false;
+                      getOffBoat(2);
+                      System.out.println("Shore has "+onShore.size()+"and Other side has "+Crossed.size());
+                      NumberOfMoves++;
+                      
                  }
        else {
-                  for(Crosser cross:Crossers)
+                  for(Crosser cross:Crossed)
               {
              
                 if(cross.isColliding(Harbour1)&&harb1==true)
                 {
                     if(boat.Passengers<2)
                     {
-                        System.out.println("getting on");
+                          
+                        //System.out.println("shore");
                         if(cross instanceof Farmer)
                             {
                                 boat.drivable=true;
                                 //harb1=true;
                             }
                                 getOnBoat(cross);
+                                System.out.println("Now there are "+Crossed.size()+" On The Other Side");
+                                System.out.println("And "+onShore.size()+" OnShore");
                                 break;
                                 
                     }
                 }
+              }
+             for(Crosser cross:onShore)
+             {
                 if(cross.isColliding(Harbour2)&&harb2==true)
                 {
                     if(boat.Passengers<2)
                     {
-                        System.out.println("getting on");
+                      //  System.out.println("getting on from Shore");
+                       
                         if(cross instanceof Farmer)
                             {
                                 boat.drivable=true;
                                 //harb1=true;
                             }
-                                getOnBoat(cross);
-                                break;
+                                 getOnBoat(cross);
+                                 System.out.println("Now there are "+onShore.size()+" On Shore");
+                                 System.out.println("And there are "+Crossed.size()+" On The Other Side");
+                                 break;
                                 
                     }
                 }
@@ -339,4 +396,36 @@ public class Story1Model {
    {
        Border2=border;
    }
+    public void run()
+   {
+       
+        timer = new AnimationTimer() {
+            
+            @Override
+            public void handle(long now) {
+            RunStory1();
+            } 
+        };
+        timer.start();
+   }
+    private void GameStatus()
+    {
+        System.out.println(" FINSI ");
+        if(Crossed.size()==4)
+        {
+            timer.stop();
+        }
+    }
+    public boolean EndGame()
+    {
+        if(Crossed.size()==4)
+        {
+              AlertBox.display("YAY","YOU WIN");
+              return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

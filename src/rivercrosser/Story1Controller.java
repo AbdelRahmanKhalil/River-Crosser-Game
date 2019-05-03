@@ -29,7 +29,8 @@ public class Story1Controller{
         View=view;
         Link();
         Model.setStage(View.getStage());
-        run();
+        Model.run();
+        check();
         System.out.println("hi");
     }
     public void sayHi()
@@ -47,6 +48,13 @@ public class Story1Controller{
         Model.getBorder2(View.getBorder1());
         
     }
+    public void check()
+    {
+        if(Model.EndGame()==true)
+        {
+          
+        }
+    }
      /*public void send(MenueController hi)
     {
         Model=hi.getModel();
@@ -55,16 +63,5 @@ public class Story1Controller{
         System.out.println("MODEL1="+Model);
     }*/
 
-   public void run()
-   {
-       AnimationTimer timer;
-        timer = new AnimationTimer() {
-            
-            @Override
-            public void handle(long now) {
-            Model.RunStory1();
-            } 
-        };
-        timer.start();
-   }
+  
 }

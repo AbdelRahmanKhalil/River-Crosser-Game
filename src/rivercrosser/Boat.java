@@ -46,6 +46,7 @@ public class Boat extends GameObject{
     }
     public boolean atHarbour(Node harbour)
     {
+        
         return Appearance.getBoundsInParent().intersects(harbour.getBoundsInParent());
     }
    //public Boat getBoat()
