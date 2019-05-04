@@ -5,8 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Node;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 //Y-AXIS 221 UPPER Y-AXIS 430 LOWER
 //X-AXIS 557 RIGHT X-AXIS 38 LEFT
@@ -57,6 +60,8 @@ public class Story1Model {
         Border1.setVisible(false);
         Border2.setVisible(false);
         GameStatus();
+        
+        EndGame();
                harbourStatus();
                stage.getScene().setOnKeyPressed(e->{
                    
@@ -67,17 +72,20 @@ public class Story1Model {
                          if(e.getCode()==KeyCode.DOWN)
                         {
                            
-                            if(player.Appearance.getTranslateY()<550&&player.Appearance.getBoundsInParent().intersects(Border2.getBoundsInParent())==false&&boat.Appearance.getBoundsInParent().intersects(Border1.getBoundsInParent())==false)
+                            if(player.Appearance.getTranslateY()<550&&player.Appearance.getBoundsInParent().intersects(Border2.getBoundsInParent())==false&&!(player instanceof Boat))
                              moveDown.execute();
-                            
+                            if(player.Appearance.getTranslateY()<550&&player.Appearance.getBoundsInParent().intersects(Border1.getBoundsInParent())==false&&player instanceof Boat)
+                            moveDown.execute();
                         }
                         if(e.getCode()==KeyCode.UP)
                         {
-                             if(player.Appearance.getTranslateY()>60&&player.Appearance.getBoundsInParent().intersects(Border1.getBoundsInParent())==false&&boat.Appearance.getBoundsInParent().intersects(Border2.getBoundsInParent())==false)
+                             if(player.Appearance.getTranslateY()>60&&player.Appearance.getBoundsInParent().intersects(Border1.getBoundsInParent())==false&&!(player instanceof Boat))
                              {
                                 
                                 moveUp.execute();
                              }
+                             if(player.Appearance.getTranslateY()>60&&player.Appearance.getBoundsInParent().intersects(Border2.getBoundsInParent())==false&&player instanceof Boat)
+                            moveUp.execute();
                         }
                         if(e.getCode()==KeyCode.LEFT)
                         {
@@ -418,21 +426,24 @@ public class Story1Model {
        // System.out.println(" FINSI ");
         if(Crossed.size()==4)
         {
-            timer.stop();
             EndGame();
         }
     }
-    public boolean EndGame()
+    public void EndGame()
     {
+        Node finish;
+        finish = new Rectangle(500,200,new ImagePattern(new Image(getClass().getResourceAsStream("/rivercrosser/Images/missiam.jpg"))));
+        finish.setTranslateX(55);
+        finish.setTranslateY(200);
+       
         if(Crossed.size()==4)
         {
-              AlertBox.display("YAY","YOU WIN");
-              return true;
+             // AlertBox.display("YAY","YOU WIN");
+             root.getChildren().add(finish);
+             timer.stop();
+              //return true;
         }
-        else
-        {
-            return false;
-        }
+        
     }
     public void Save()
     {

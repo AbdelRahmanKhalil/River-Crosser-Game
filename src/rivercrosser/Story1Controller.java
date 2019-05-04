@@ -30,7 +30,7 @@ public class Story1Controller {
         Link();
         Model.setStage(View.getStage());
         Model.run();
-        check();
+//        check();
         System.out.println("hi");
         
     }
@@ -49,13 +49,7 @@ public class Story1Controller {
         Model.getBorder2(View.getBorder1());
         
     }
-    public void check()
-    {
-        if(Model.EndGame()==true)
-        {
-          
-        }
-    }
+   
      /*public void send(MenueController hi)
     {
         Model=hi.getModel();
