@@ -11,10 +11,14 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
+
 //Y-AXIS 221 UPPER Y-AXIS 430 LOWER
 //X-AXIS 557 RIGHT X-AXIS 38 LEFT
 public class Story1Model {
-    
+
     private ArrayList<Crosser> Crossers = new ArrayList<Crosser>();
     private ArrayList<Crosser> Crossed = new ArrayList<Crosser>();
     private ArrayList<Crosser> onBoat = new ArrayList<Crosser>();
@@ -37,6 +41,9 @@ public class Story1Model {
     private Node Border2;
     int NumberOfMoves;
     GameObject player;
+    String musicFile = "missiam.mp3"; 
+    Media sound = new Media(new File(musicFile).toURI().toString());
+    MediaPlayer mediaPlayer = new MediaPlayer(sound);
    private XMLwrite saver = new XMLwrite();
     //Story1View View =new Story1View();
     public void setCrossers(ArrayList<Crosser> crossers)
@@ -436,11 +443,15 @@ public class Story1Model {
         finish.setTranslateX(55);
         finish.setTranslateY(200);
        
+        
         if(Crossed.size()==4)
         {
+            timer.stop();
+            mediaPlayer.play();
+            root.getChildren().add(finish);
              // AlertBox.display("YAY","YOU WIN");
-             root.getChildren().add(finish);
-             timer.stop();
+            
+             
               //return true;
         }
         

@@ -79,7 +79,7 @@ public class Story1View
         addHarbour();
         addBoat();
         addCrosser(Generator.createCrosser("Farmer",3),100,100); 
-        addCrosser(Generator.createCrosser("Herbivore",1),200,100); 
+        addCrosser(Generator.createCrosser("Herbivore",2),200,100); 
         addCrosser(Generator.createCrosser("Carnivore",1),300,100); 
         addCrosser(Generator.createCrosser("Plant",0),400,100); 
            

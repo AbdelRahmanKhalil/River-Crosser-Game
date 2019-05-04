@@ -30,19 +30,23 @@ public class Boat extends GameObject{
     
      public void moveUp()
     {
-        Appearance.setTranslateY(Appearance.getTranslateY()-12);
+        Appearance.setTranslateY(Appearance.getTranslateY()-15);
+        Appearance.setRotate(-180);
     }
     public void moveDown()
     {
-        Appearance.setTranslateY(Appearance.getTranslateY()+12);
+        Appearance.setTranslateY(Appearance.getTranslateY()+15);
+        Appearance.setRotate(-180);
     }
     public void moveLeft()
     {
-        Appearance.setTranslateX(Appearance.getTranslateX()-12);
+        Appearance.setTranslateX(Appearance.getTranslateX()-15);
+         Appearance.setRotate(90);
     }
     public void moveRight()
     {
-        Appearance.setTranslateX(Appearance.getTranslateX()+12);
+        Appearance.setTranslateX(Appearance.getTranslateX()+15);
+         Appearance.setRotate(-90);
     }
     public boolean atHarbour(Node harbour)
     {

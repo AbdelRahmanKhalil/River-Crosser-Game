@@ -8,6 +8,7 @@ package rivercrosser;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import javafx.scene.Node;
+import javafx.scene.transform.Rotate;
 
 /**
  *
@@ -130,18 +131,22 @@ public class Crosser extends GameObject implements ICrosser{
     public void moveUp()
     {
         Appearance.setTranslateY(Appearance.getTranslateY()-Speed);
+        Appearance.setRotate(0);
     }
     public void moveDown()
     {
         Appearance.setTranslateY(Appearance.getTranslateY()+Speed);
+        Appearance.setRotate(0);
     }
     public void moveLeft()
     {
        Appearance.setTranslateX(Appearance.getTranslateX()-Speed);
+       Appearance.setRotate(-90);
     }
     public void moveRight()
     {
          Appearance.setTranslateX(Appearance.getTranslateX()+Speed);
+         Appearance.setRotate(90);
     }
     public boolean isColliding(Node b)
     {
